@@ -27,6 +27,7 @@ cycle       = 'cycle00771';
 TP006_00771 = load(['..\data\processed\',experiment,'\',cycle,'\TidalPrism.ASC']);
 cycle       = 'cycle00291';
 TP006_00291 = load(['..\data\processed\',experiment,'\',cycle,'\TidalPrism.ASC']);
+
 % Making time vectors
 TP006_time  = [291 771 2281 4401 5887 6884 7869 8863 10915 13076];
 TP006_w4    = [TP006_00291(104) TP006_00771(104) TP006_02281(104) TP006_04401(104) TP006_05887(104) TP006_06884(104) TP006_07869(104) TP006_08863(104) TP006_10915(104) TP006_13076(104)];
@@ -57,5 +58,4 @@ plot(TP006_time, TP006_w16,'Color',customcolor(5,:),'LineWidth',2)
 legend('4 m', '6 m', '8 m', '12 m', ' 16 m','Location','northeast')
 legend 'Boxoff'
 xlabel('Time (cycles)')
-set(gca,'xticklabel',[])
 ylabel('Tidal prism (m^3)')
