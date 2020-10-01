@@ -2,7 +2,6 @@
 % Lonneke Roelofs
 
 close all
-clear all
 clc
 
 %% Load data
@@ -187,6 +186,7 @@ load(['..\data\processed\',experiment,'\',cycle,'\X_array.ASC']);
 maxJ=118;
 maxI=736;
 
+X = zeros(maxJ,maxI);
 for i       = 1:maxJ
     X(i,:) = X_array((i-1)*maxI+1:i*maxI);
 end
