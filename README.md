@@ -8,7 +8,7 @@ In the Metronome tidal flume scaled estuaries (tidally influenced river mouths) 
 # Installation
 Download the data, folder structure and scripts to your own computer.
 
-Make sure you have MATLAB installed (project was created on a Windows machine in MATLAB 2018b).
+Make sure you have MATLAB installed (project was created on a Windows machine in MATLAB 2018b, 9.5.0.1049112 (R2018b) Update 3).
 
 Run the CompareTPtime.m script from the src folder. Make sure you select the desired experiment when running the code. 
 
