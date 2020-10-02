@@ -29,4 +29,4 @@ plot(timeseries006, TP006_w16,'Color',customcolor(5,:),'LineWidth',2)
 legend('4 m', '6 m', '8 m', '12 m', ' 16 m','Location','northeast')
 legend 'Boxoff'
 xlabel('Time (cycles)')
-ylabel('Tidal prism (m^3)')
+ylabel('Tidal prism (m3)')
