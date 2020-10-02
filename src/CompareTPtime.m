@@ -7,7 +7,7 @@ clc
 
 %% Load data
 experiment  = 'Exp006';
-[TP006 timeseries006] = LoadingTPdata(experiment);
+[TP006 timeseries006 X006] = LoadingTPdata(experiment);
 
 % Finding tidal prism at different locations along flume for all time steps
 TP006_w4    = [TP006(1,104) TP006(2,104) TP006(3,104) TP006(4,104) TP006(5,104) TP006(6,104) TP006(7,104) TP006(8,104) TP006(9,104) TP006(10,104)];

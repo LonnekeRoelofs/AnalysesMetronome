@@ -1,7 +1,8 @@
-function [TP timeseries]=extractTPtime(experimentnr);
-% extractTPtime extracts all tidal prism Nays2D results from one experiment
+function [TP timeseries]=LoadingTPdata(experimentnr);
+% LoadingTPdata extracts all tidal prism Nays2D results from one experiment
 %               and gives timeseries. Note that vectors are resized to the 
-%               first time step.
+%               first time step. Assumptions are: experiments numbers are
+%               put in as Exp006 etc, cycle folders are named cycle....
 % IN
 % experimentnr  experiment you want the TP of (Exp006, Exp011 etc.)
 %
@@ -10,6 +11,7 @@ function [TP timeseries]=extractTPtime(experimentnr);
 %               different time steps
 % timeseries    cycle number corresponding to TP
 
+%getting information of the folder structure for importing data
 MyFileInfo   = dir(['..\data\processed\', experimentnr]);
 MyFileInfo(ismember({MyFileInfo.name},{'.','..'})) = [];
 NumberCycles = length(MyFileInfo);
@@ -19,21 +21,31 @@ for i = 1:NumberCycles
     Names(i) = {([MyFileInfo(i).name])};
 end
 
+%determining size of first data file because data files could ha
 firstcycle = char(Names(1));
-firstTP    = load(['..\data\processed\',x,'\',firstcycle,'\TidalPrism.ASC']);
+firstTP    = load(['..\data\processed\',experimentnr,'\',firstcycle,'\TidalPrism.ASC']);
 lengthTP   = length(firstTP);
 
 for i = 1:NumberCycles
     cycle   = char(Names(i));
-    TP(i,:) = imresize(load(['..\data\processed\',x,'\',cycle,'\TidalPrism.ASC']),[1 lengthTP]);
+    TP(i,:) = imresize(load(['..\data\processed\',experimentnr,'\',cycle,'\TidalPrism.ASC']),[1 lengthTP]);
 end
 
-Key='cycle';
+
 for i = 1:NumberCycles
-    A=string(Names(i));
-    Index = strfind(A,Key);
-    Value = sscanf((A(Index(1) , length(Key):end)), '%g', 1);
+    Value = sscanf(string(Names(i)), 'cycle%d');
     timeseries(i)=Value;
+end
+
+
+load(['..\data\processed\',experiment,'\cycle',num2str(timeseries006(end)),'\X_array.ASC']);
+maxJ = 118;
+maxI = 736;
+
+X = zeros(maxJ,maxI);
+for i       = 1:maxJ
+    X(i,:) = X_array((i-1)*maxI+1:i*maxI);
+end
 end
 
 
