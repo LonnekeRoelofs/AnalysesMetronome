@@ -2,10 +2,13 @@
 % Lonneke Roelofs
 
 close all
+clear all
 clc
 
 %% Load data
 experiment  = 'Exp006';
+[TP006 timeseries006] = LoadingTPdata(experiment);
+
 cycle       = 'cycle13076';
 TP006_13076 = load(['..\data\processed\',experiment,'\',cycle,'\TidalPrism.ASC']);
 cycle       = 'cycle10915';
